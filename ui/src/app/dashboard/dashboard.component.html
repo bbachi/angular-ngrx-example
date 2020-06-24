@@ -1,0 +1,49 @@
+<app-shared-header></app-shared-header>
+<div class="row">
+  <div class="col-md-2">
+    <app-leftnav></app-leftnav>
+  </div>
+  <div class="col-md-10">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mrgnbtm">
+            <h2>ToDo List</h2>
+            <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Task</label>
+                  <input type="text" class="form-control" formControlName="task" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Create a Task">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="exampleInputPassword1">Assignee</label>
+                  <input type="text" class="form-control" formControlName="assignee" id="exampleInputPassword1" placeholder="Assignee">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="sel1">Status:</label>
+                  <select formControlName="status" class="form-control" id="sel1">
+                    <option>To Be Done</option>
+                    <option>In Progress</option>
+                    <option>Completed</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" [disabled]="!todoForm.valid" class="btn btn-danger">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="mrgnbtm">
+        <app-tasks
+          *ngIf="tasks.length !== 0"
+          [tasks]="tasks"
+          (deleteTask)="deleteTask($event)"
+          (editTask)="editTask($event)"
+          >
+        </app-tasks>
+      </div>
+  </div>
+</div>
+

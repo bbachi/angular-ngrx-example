@@ -1,0 +1,27 @@
+.loginbox {
+  width: 30%;
+  height: auto;
+  margin: 20px 0px;
+}
+
+.loginhead {
+  text-align: center;
+  color: rgb(12, 79, 138);
+  margin-bottom: 50px;
+}
+
+button {
+  width: 100px;
+}
+
+.btnholder {
+  text-align: center;
+}
+
+.btnholder a {
+  color: rgb(255, 0, 191);
+}
+
+label {
+  color: rgb(34, 12, 131);
+}

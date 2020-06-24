@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="d-flex justify-content-md-center">
+  <div class="loginbox">
+      <div class="d-flex justify-content-md-center">
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+              <h2 class="loginhead">Login</h2>
+              <div [hidden]="!loginForm.submitted && !loginForm.valid"
+                      class="alert alert-danger">
+                   Please Fill the form
+                 </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">First Name</label>
+                <input type="text" [(ngModel)]="model.firstName" class="form-control" required name="firstName" aria-describedby="emailHelp" placeholder="Enter Firstname">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Last Name</label>
+                <input type="password" [(ngModel)]="model.lastName" class="form-control" name="lastName" required placeholder="Enter Lastname">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Email</label>
+                <input type="password" [(ngModel)]="model.email" class="form-control" name="email" required placeholder="Enter Email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" [(ngModel)]="model.password" class="form-control" name="password" required placeholder="Password">
+              </div>
+              <div class="btnholder">
+                  <p>Already have an account? <a routerLink="/login">Lgoin Here!</a></p>
+                  <button type="submit" class="btn btn-primary justify-content-md-center">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

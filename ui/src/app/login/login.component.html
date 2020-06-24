@@ -1,0 +1,28 @@
+<app-header></app-header>
+<div class="d-flex justify-content-md-center">
+  <div class="loginbox">
+      <div class="d-flex justify-content-md-center">
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+              <h2 class="loginhead">Login</h2>
+              <div class="form-group">
+                  <div [hidden]="!loginForm.submitted && !loginForm.valid"
+                      class="alert alert-danger">
+                   Please Fill the form
+                 </div>
+              <label for="exampleInputEmail1">User Name</label>
+                <input type="text" [(ngModel)]="model.email" class="form-control" required name="email" aria-describedby="emailHelp" placeholder="Enter Email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your details.</small>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" [(ngModel)]="model.password" class="form-control" name="password" required placeholder="Password">
+              </div>
+              <div class="btnholder">
+                  <p>No Account? <a routerLink="/signup">Sign Up Here!</a></p>
+                  <button type="submit" class="btn btn-danger justify-content-md-center">Submit</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,83 @@
+<div class="container">
+  <h2>Tasks</h2>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Task Id</th>
+        <th>Task Name</th>
+        <th>Assignee</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks; let i = index">
+        <td>
+          {{task.id}}
+        </td>
+        <td>
+          {{task.task}}
+        </td>
+        <td>
+          {{task.assignee}}
+        </td>
+        <td>
+          <div class="row">
+            <div class="col-md-6">
+              {{task.status}}
+            </div>
+            <div class="col-md-3">
+              <button type="button" (click)="openModal(template, task)" class="btn btn-warning right">Edit</button>
+            </div>
+            <div class="col-md-3">
+              <button type="button" (click)="delTask(task.id)" class="btn btn-danger right">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Task Edit</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail1">Id</label>
+          {{editingId}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputEmail1">Task</label>
+          <input type="text" class="form-control" formControlName="task" id="exampleInputEmail1" placeholder="Create a Task">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="exampleInputPassword1">Assignee</label>
+          <input type="text" class="form-control" formControlName="assignee" id="exampleInputPassword1" placeholder="Assignee">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="sel1">Status:</label>
+          <select formControlName="status" class="form-control" id="sel1">
+            <option>To Be Done</option>
+            <option>In Progress</option>
+            <option>Completed</option>
+          </select>
+        </div>
+      </div>
+      <div class="btncenter">
+        <button type="submit" [disabled]="!editForm.valid" class="btn btn-danger">Confirm</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

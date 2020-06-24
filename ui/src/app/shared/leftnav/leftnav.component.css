@@ -1,0 +1,11 @@
+.nav {
+  height: 1000px;
+  background-color: rgb(9, 107, 236);
+  padding: 3%;
+}
+
+.list-group li {
+  margin-bottom: 10px;
+  margin-left: 40px;
+  cursor: pointer;
+}
