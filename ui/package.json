@@ -24,7 +24,7 @@
     "@ngrx/router-store": "^9.2.0",
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.5.0",
     "install": "^0.13.0",
     "lodash": "^4.17.15",
     "ngrx-store-localstorage": "^9.0.0",
