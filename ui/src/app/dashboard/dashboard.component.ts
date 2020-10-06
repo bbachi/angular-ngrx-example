@@ -21,19 +21,11 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router, private readonly store: Store) {
     this.store.select(fromRoot.getLoggedInUser).pipe(
       takeUntil(this.destroy$)
-    ).subscribe(data => {
-      console.log('in the dashboard:::', data);
-      this.user = data.user;
-    });
+    ).subscribe(data => this.user = data.user);
 
     this.store.select(fromRoot.getTasks).pipe(
       takeUntil(this.destroy$)
-    ).subscribe(data => {
-      console.log('in the dashboard:::', data);
-      if (data.isLoadingSuccess) {
-        this.tasks = data.tasks;
-      }
-    });
+    ).subscribe(data => this.tasks = data.tasks);
   }
 
   todoForm = new FormGroup({
@@ -56,20 +48,14 @@ export class DashboardComponent implements OnInit {
     this.todoForm.reset();
   }
 
-  deleteTask(taskid: number) {
+  deleteTask(taskid: any) {
     console.log('deleting this task:::', taskid);
-    /*this.todoService.deleteTask(taskid).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('message::::', data);
-      this.getTasks();
-    });*/
+    this.store.dispatch(todoActions.deleteTask({taskid}));
   }
 
   editTask(task: any) {
     console.log('editing this task:::', task);
-    /*this.todoService.editTask(task).pipe(takeUntil(this.destroy$)).subscribe(data => {
-      console.log('message::::', data);
-      this.getTasks();
-    });*/
+    this.store.dispatch(todoActions.editTask({task}));
   }
 
   ngOnDestroy() {
@@ -78,6 +64,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

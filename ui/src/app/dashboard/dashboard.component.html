@@ -3,7 +3,7 @@
   <div class="col-md-2">
     <app-leftnav></app-leftnav>
   </div>
-  <div class="col-md-10">
+  <div class="col-md-10 mrgtop5">
       <div class="container">
         <div class="row">
           <div class="col-md-12 mrgnbtm">
@@ -37,7 +37,7 @@
 
       <div class="mrgnbtm">
         <app-tasks
-          *ngIf="tasks.length !== 0"
+          *ngIf="tasks !== undefined && tasks?.length !== 0"
           [tasks]="tasks"
           (deleteTask)="deleteTask($event)"
           (editTask)="editTask($event)"

@@ -20,7 +20,7 @@ export const reducers: ActionReducerMap<State> = {
   todo: fromTodo.reducer,
 };
 
-const reducerKeys = ['user'];
+const reducerKeys = ['user', 'todo'];
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({keys: reducerKeys})(reducer);
 }

@@ -22,7 +22,7 @@ export const initialState: State = {
 const loginReducer = createReducer(
   initialState,
   on(userActions.login, (state, {user}) => ({user, isLoading: true})),
-  on(userActions.loginSuccess, (state, result) => ({user: state.user, result, isLoading: false, isLoadingSuccess: true})),
+  on(userActions.loginSuccess, (state, result) => ({user: result.user, result, isLoading: false, isLoadingSuccess: true})),
   on(userActions.signup, (state, {user}) => ({user, isLoading: true})),
   on(userActions.signupSuccess, (state, result) => ({user: state.user, result, isLoading: false, isLoadingSuccess: true}))
 );
@@ -32,7 +32,10 @@ export function reducer(state: State | undefined, action: Action): any {
 }
 
 export const getLoggedInUser = (state: State) => {
-  return {user: state.user}
+  return {
+    user: state.user,
+    isLoadingSuccess: state.isLoadingSuccess
+  }
 };
 
 export const userLogin = (state: State) => {
